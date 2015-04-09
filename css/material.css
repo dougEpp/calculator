@@ -1,0 +1,26 @@
+md-button {
+width: 100%;
+background-color: #ff0000;
+}
+
+.sidebarbtn {
+	margin: 10px;
+
+}
+
+.md-primary {
+	margin-left: -20px;
+	width: 100%;
+	height: 50px;
+}
+
+.md-raised-form {
+	width: 48%;
+	height: 40px;
+	margin: 10px;
+}
+
+.sidebar {
+	padding: 0;
+	max-width: 250px;
+}
