@@ -110,7 +110,6 @@
             
             
 			<div ng-hide="compareEconomicValue">
-
 				<div class="jumbo" ng-controller="compareEconomicValueLump">
 			        <div layout layout-sm="column">
 						<md-input-container flex="100" class="float">
@@ -182,8 +181,8 @@
                         </md-input-container>
                     </div>
                 </div>
-
-			</div>	
+			</div>
+	
 			
 			
 			<div ng-hide="originalLoanAndBalance">
