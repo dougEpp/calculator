@@ -13,6 +13,19 @@ App.controller('fvOrdinarySimpleAnnuityCtrl', function($scope, $window) {
 	$scope.IE = function() { return $scope.FV() - ($scope.PMT * $scope.N);};
 	});
 
+App.controller('compoundInterestCtrl', function($scope, $window) {
+	
+	$scope.pv = 2000;
+	$scope.i = .045 / 365;
+	$scope.n = 4 * 365;
+	
+	$scope.tempiplus1 = function() {return (1 + parseFloat($scope.i));};
+	
+	$scope.iplus1s = function() { return $window.Math.pow($scope.tempiplus1(), $scope.n);};
+	$scope.fv = function() { return $scope.iplus1s() * $scope.pv;};
+	
+});
+	
 App.controller('pvOrdinarySimpleAnnuityCtrl', function($scope, $window) {
 
 	$scope.PMT = 450;
@@ -108,6 +121,7 @@ App.controller('global', function($scope) {
 	$scope.compareEconomicValue = true,
 	$scope.originalLoanAndBalance = true,
 	$scope.generalAnnuities = true,
+	$scope.compoundInterest = true,
 
 	$scope.ordinarySimpleAnnuityClick = function() 
 	{
@@ -115,6 +129,7 @@ App.controller('global', function($scope) {
 			$scope.compareEconomicValue = true;
 			$scope.originalLoanAndBalance = true;
 			$scope.generalAnnuities = true;
+			$scope.compoundInterest = true;
 	}
 	$scope.compareEconomicValueClick = function() 
 	{
@@ -122,6 +137,7 @@ App.controller('global', function($scope) {
 			$scope.ordinarySimpleAnnuity = true;
 			$scope.originalLoanAndBalance = true;
 			$scope.generalAnnuities = true;
+			$scope.compoundInterest = true;
 	}
 	$scope.originalLoanAndBalanceClick = function() 
 	{
@@ -136,6 +152,16 @@ App.controller('global', function($scope) {
 			$scope.originalLoanAndBalance = true;
 			$scope.ordinarySimpleAnnuity = true;
 			$scope.compareEconomicValue = true;
+			$scope.compoundInterest = true;
+	}
+	$scope.compoundInterestClick = function()
+	{
+			$scope.compoundInterest = false;
+			$scope.generalAnnuities = true;
+			$scope.originalLoanAndBalance = true;
+			$scope.ordinarySimpleAnnuity = true;
+			$scope.compareEconomicValue = true;
+		
 	}
 	
 });
