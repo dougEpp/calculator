@@ -35,6 +35,9 @@
 			<section layout="row" class="sidebarbtn" layout-sm="column" layout-align="center center">
 				<md-button class="md-primary md-hue-1" ng-click="generalAnnuitiesClick()">General Annuities</md-button>
 		    </section>
+			<section layout="row" class="sidebarbtn" layout-sm="column" layout-align="center center">
+				<md-button class="md-primary md-hue-1" ng-click="compoundInterestClick()">Compound Interest</md-button>
+		    </section>
         </div>
         
         
@@ -258,6 +261,38 @@
 							<h1 style="text-align: center;">
 								i<sub>2</sub> = {{I2()}}<br>
 								FV = {{GA() | currency}}
+							</h1>
+						</md-input-container>
+					</div>			
+				</div>
+			</div>	
+
+			
+			<div ng-hide="compoundInterest">
+				<div class="jumbo" ng-controller="compoundInterestCtrl">
+			        <div layout layout-sm="column">
+						<md-input-container flex="100" class="float">
+						<h2>Calculating FV</h2>
+						</md-input-container>
+		            </div>	
+		            <div layout layout-sm="column">
+						<md-input-container flex="33" class="float">
+							<label>pv (Initial value of the loan)</label>
+							<input ng-model="pv">
+						</md-input-container>
+						<md-input-container flex="33" class="float">
+							<label>i (interest rate per compounding period)</label>
+							<input ng-model="i">
+						</md-input-container>
+						<md-input-container flex="33" class="float">
+							<label>n (number of compounding periods</label>
+							<input ng-model="n">
+						</md-input-container>
+		            </div>
+		            <div layout layout-sm="column">
+			            <md-input-container flex="100" class="float">
+							<h1 style="text-align: center;">
+								FV = {{fv() | currency}}
 							</h1>
 						</md-input-container>
 					</div>			
