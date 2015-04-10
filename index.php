@@ -110,34 +110,79 @@
             
             
 			<div ng-hide="compareEconomicValue">
-				<div class="jumbo" ng-controller="compareEconomicValueCtrl">
+
+				<div class="jumbo" ng-controller="compareEconomicValueLump">
 			        <div layout layout-sm="column">
 						<md-input-container flex="100" class="float">
-						<h2>Compare Economic Value (Is option A better than option B?)</h2>
+						<h2>Compare Economic Value with Future Value</h2>
 						</md-input-container>
 		            </div>	
 		            <div layout layout-sm="column">
-						<md-input-container flex="33" class="float">
-							<label>PMT</label>
-							<input ng-model="PMT" placeholder="Example '450'">
+						<md-input-container flex="25" class="float">
+							<label>Interest Rate Per Time Period as %</label>
+							<input ng-model="I" placeholder="Example '5'">
 						</md-input-container>
-						<md-input-container flex="33" class="float">
-							<label>i</label>
-							<input ng-model="I" placeholder="Example 8% compounded monthly = '8'">
+						<md-input-container flex="25" class="float">
+							<label>Number of Time Periods</label>
+							<input ng-model="N" placeholder="Example 8% compounded monthly = '8'">
 						</md-input-container>
-						<md-input-container flex="33" class="float">
-							<label>n</label>
-							<input ng-model="N" placeholder="Example number of compounding periods - '36'">
+						<md-input-container flex="25" class="float">
+							<label>Future Value</label>
+							<input ng-model="FV" placeholder="Future Value, example 100000">
 						</md-input-container>
+						<md-input-container flex="25" class="float">
+                            <label>Down Payment</label>
+                            <input ng-model="downPayment" placeholder="Example '5'">
+                        </md-input-container>
 		            </div>
 		            <div layout layout-sm="column">
 			            <md-input-container flex="100" class="float">
 							<h1 style="text-align: center;">
-								PV = {{PV() | currency}}						
+								PV of Lump Sum = {{PV() | currency}}
+							</h1>
+							<h1 style="text-align: center;">
+							    Todays value of total agreement = {{total() | currency}}
 							</h1>
 						</md-input-container>
 					</div>			
 				</div>
+
+				<div class="jumbo" ng-controller="compareEconomicValuePmt">
+                    <div layout layout-sm="column">
+                        <md-input-container flex="100" class="float">
+                        <h2>Compare Economic Value with Payments</h2>
+                        </md-input-container>
+                    </div>
+                    <div layout layout-sm="column">
+                        <md-input-container flex="25" class="float">
+                            <label>Interest Rate Per Time Period as %</label>
+                            <input ng-model="I" placeholder="Example '5'">
+                        </md-input-container>
+                        <md-input-container flex="25" class="float">
+                            <label>Number if Time Periods</label>
+                            <input ng-model="N" placeholder="Example 6 durations">
+                        </md-input-container>
+                        <md-input-container flex="25" class="float">
+                            <label>PMT (Payment amounts)</label>
+                            <input ng-model="PMT" placeholder="Regular Payments amount">
+                        </md-input-container>
+                        <md-input-container flex="25" class="float">
+                            <label>Down Payment</label>
+                            <input ng-model="downPayment" placeholder="Down payment ex 16000">
+                        </md-input-container>
+                    </div>
+                    <div layout layout-sm="column">
+                        <md-input-container flex="100" class="float">
+                            <h1 style="text-align: center;">
+                                PV = {{PV() | currency}}
+                            </h1>
+                            <h1 style="text-align: center;">
+                                Total = {{total() | currency}}
+                            </h1>
+                        </md-input-container>
+                    </div>
+                </div>
+
 			</div>	
 			
 			
