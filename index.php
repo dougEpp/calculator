@@ -1,7 +1,7 @@
 <?php
 ?>
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +23,6 @@
     <body>
     <div class="container-fluid" ng-app="App" ng-controller="global">
         <div class="col-sm-3 col-md-2c sidebar" ng-controller="sidebarCtrl">
-			<section layout="row" class="sidebarbtn" layout-sm="column" layout-align="center center">
-				<md-button class="md-primary md-hue-1" ng-click="overviewClick()">Overview</md-button>
-			</section>
             <section layout="row" class="sidebarbtn" layout-sm="column" layout-align="center center">
 				<md-button class="md-primary md-hue-1" ng-click="ordinarySimpleAnnuityClick()">Ordinary Simple annuity</md-button>
 			</section>
@@ -33,7 +30,7 @@
 				<md-button class="md-primary md-hue-1" ng-click="compareEconomicValueClick()">Compare Economic Value</md-button>
 		    </section>
 			<section layout="row" class="sidebarbtn" layout-sm="column" layout-align="center center">
-				<md-button class="md-primary md-hue-1" ng-click="originalLoanAndBalanceClick()">Calc Original Loan/Balance</md-button>
+				<md-button class="md-primary md-hue-1" ng-click="originalLoanAndBalanceClick()">Original Loan/Balance</md-button>
 			</section>
 			<section layout="row" class="sidebarbtn" layout-sm="column" layout-align="center center">
 				<md-button class="md-primary md-hue-1" ng-click="generalAnnuitiesClick()">General Annuities</md-button>
@@ -174,6 +171,49 @@
 							<h1 style="text-align: center;">
 								Original Loan Value = {{PV() | currency}}<br>
 								Balance after '{{Np}}' payments = {{PVNp() | currency}}				
+							</h1>
+						</md-input-container>
+					</div>			
+				</div>
+			</div>
+			
+			
+			<div ng-hide="generalAnnuities">
+				<div class="jumbo" ng-controller="generalAnnuitiesCtrl">
+			        <div layout layout-sm="column">
+						<md-input-container flex="100" class="float">
+						<h2>Calculating FV with i<sub>2</sub></h2>
+						</md-input-container>
+		            </div>	
+		            <div layout layout-sm="column">
+						<md-input-container flex="33" class="float">
+							<label>i</label>
+							<input ng-model="I" placeholder="8% compounded = '8'">
+						</md-input-container>
+						<md-input-container flex="33" class="float">
+							<label>c</label>
+							<input ng-model="C" placeholder="Compoundings per year = '2'">
+						</md-input-container>
+						<md-input-container flex="33" class="float">
+							<label>n</label>
+							<input ng-model="N" placeholder="Payments per year = '52'">
+						</md-input-container>
+		            </div>
+		            <div layout layout-sm="column">
+						<md-input-container flex="50" class="float">
+							<label>PMT</label>
+							<input ng-model="PMT" placeholder="Example $'50' per month">
+						</md-input-container>
+						<md-input-container flex="50" class="float">
+							<label>N<sub>y</sub></label>
+							<input ng-model="Ny" placeholder="Number of years '1'">
+						</md-input-container>
+		            </div>
+		            <div layout layout-sm="column">
+			            <md-input-container flex="100" class="float">
+							<h1 style="text-align: center;">
+								i<sub>2</sub> = {{I2()}}<br>
+								FV = {{GA() | currency}}
 							</h1>
 						</md-input-container>
 					</div>			
