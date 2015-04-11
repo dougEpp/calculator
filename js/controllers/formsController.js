@@ -12,19 +12,6 @@ App.controller('fvOrdinarySimpleAnnuityCtrl', function($scope, $window) {
 	$scope.FV = function(){ return (parseFloat($scope.PMT) * (($scope.Iplus1s() - 1)/parseFloat($scope.Icm())));};
 	$scope.IE = function() { return $scope.FV() - ($scope.PMT * $scope.N);};
 	});
-
-App.controller('compoundInterestCtrl', function($scope, $window) {
-	
-	$scope.pv = 2000;
-	$scope.i = .045 / 365;
-	$scope.n = 4 * 365;
-	
-	$scope.tempiplus1 = function() {return (1 + parseFloat($scope.i));};
-	
-	$scope.iplus1s = function() { return $window.Math.pow($scope.tempiplus1(), $scope.n);};
-	$scope.fv = function() { return $scope.iplus1s() * $scope.pv;};
-	
-});
 	
 App.controller('pvOrdinarySimpleAnnuityCtrl', function($scope, $window) {
 
@@ -87,6 +74,34 @@ App.controller('compareEconomicValuePmt', function($scope, $window) {
     $scope.total = function() {
         return $scope.PV() + $scope.downPayment;
     }
+});
+
+App.controller('compoundInterestFVCtrl', function($scope, $window) {
+	
+	$scope.pva = 2000;
+	$scope.I = .0045 / 365;
+	//$i = function () {return $scope.I / 100;};
+	$scope.n = 4 * 365;
+	
+	$temp = function() {return (1 + parseFloat($scope.I));};
+	
+	$tempiplus1s = function() { return $window.Math.pow($temp(), $scope.n);};
+	$scope.fva = function() { return $tempiplus1s() * $scope.pva;};
+	
+});
+
+App.controller('compoundInterestPVCtrl', function($scope, $window) {
+	
+	$scope.fv = 1500;
+	$scope.i = 4 / 2;
+	$i = function () {return $scope.i / 100;};
+	$scope.n = 6;
+	
+	$tempiplus1 = function() {return (1 + parseFloat($i()));};
+	
+	$iplus1s = function() { return $window.Math.pow($tempiplus1(), -($scope.n));};
+	$scope.pv = function() { return $iplus1s() * $scope.fv;};
+	
 });
 	
 App.controller('generalAnnuitiesCtrl', function($scope, $window) {
