@@ -161,7 +161,7 @@
                             <input ng-model="I" placeholder="Example '5'">
                         </md-input-container>
                         <md-input-container flex="25" class="float">
-                            <label>Number if Time Periods</label>
+                            <label>Number of Time Periods</label>
                             <input ng-model="N" placeholder="Example 6 durations">
                         </md-input-container>
                         <md-input-container flex="25" class="float">
@@ -269,7 +269,7 @@
 
 			
 			<div ng-hide="compoundInterest">
-				<div class="jumbo" ng-controller="compoundInterestCtrl">
+				<div class="jumbo" ng-controller="compoundInterestFVCtrl">
 			        <div layout layout-sm="column">
 						<md-input-container flex="100" class="float">
 						<h2>Calculating FV</h2>
@@ -277,8 +277,37 @@
 		            </div>	
 		            <div layout layout-sm="column">
 						<md-input-container flex="33" class="float">
-							<label>pv (Initial value of the loan)</label>
-							<input ng-model="pv">
+							<label>pv (Present value of the loan)</label>
+							<input ng-model="pva">
+						</md-input-container>
+						<md-input-container flex="33" class="float">
+							<label>i (interest rate per compounding period)</label>
+							<input ng-model="I">
+						</md-input-container>
+						<md-input-container flex="33" class="float">
+							<label>n (number of compounding periods</label>
+							<input ng-model="n">
+						</md-input-container>
+		            </div>
+		            <div layout layout-sm="column">
+			            <md-input-container flex="100" class="float">
+							<h1 style="text-align: center;">
+								FV = {{fva() | currency}}
+							</h1>
+						</md-input-container>
+					</div>	
+				</div>
+				
+				<div class="jumbo" ng-controller="compoundInterestPVCtrl">
+			        <div layout layout-sm="column">
+						<md-input-container flex="100" class="float">
+						<h2>Calculating PV</h2>
+						</md-input-container>
+		            </div>	
+		            <div layout layout-sm="column">
+						<md-input-container flex="33" class="float">
+							<label>fv (Future value of the loan)</label>
+							<input ng-model="fv">
 						</md-input-container>
 						<md-input-container flex="33" class="float">
 							<label>i (interest rate per compounding period)</label>
@@ -292,7 +321,7 @@
 		            <div layout layout-sm="column">
 			            <md-input-container flex="100" class="float">
 							<h1 style="text-align: center;">
-								FV = {{fv() | currency}}
+								PV = {{pv() | currency}}
 							</h1>
 						</md-input-container>
 					</div>			
